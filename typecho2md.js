@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var version = "1.0.0";
+var version = "1.0.1";
 var argv = require('minimist')(process.argv.slice(2));
 var path = require('path');
 
