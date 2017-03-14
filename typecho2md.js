@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var version = "1.0.1";
+var version = "1.0.3";
 var argv = require('minimist')(process.argv.slice(2));
 var path = require('path');
 
@@ -10,7 +10,7 @@ var MySQLUser = argv.u || argv.user || 'root';
 var MySQLPassword = argv.k || argv.key || argv.password || '';
 var MySQLDatabase = argv.d || argv.database || 'typecho';
 var MySQLPrefix = argv.p || argv.prefix || 'typecho_';
-var template = argv.t || argv.template || path.resolve(__dirname, 'default.md');
+var template = argv.t || argv.template || path.resolve(__dirname, 'md_sample.ejs');
 var exportDir = argv._[0];
 
 showHelp = function () {
@@ -104,7 +104,13 @@ connection.query('SELECT * FROM ' + MySQLPrefix + 'contents', function (error, r
     for (var i in results) {
         var item = results[i];
         if (item.parent == 0) {
-            item.text = item.text.split("\r\n").join("\n");
+            var content = item.text.split("\r\n");
+            for (var j in content) {
+                if (content[j + 1] != "" && content[j].charAt(content[j].length - 1) != " ") {
+                    content[j] += "  ";
+                }
+            }
+            item.text = content.join("\n");
             var out = ejs.render(templateStr, item);
             var fileName = item.slug;
             if (item.status != "publish") {
