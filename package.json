@@ -1,6 +1,6 @@
 {
   "name": "typecho-to-md",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A cli tool let you dump Markdown files from a Typecho installation",
   "author": "tcdw <admin@tcdw.net>",
   "main": "typecho2md.js",

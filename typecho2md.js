@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var version = "1.0.3";
+var version = "1.0.4";
 var argv = require('minimist')(process.argv.slice(2));
 var path = require('path');
 
@@ -16,24 +16,24 @@ var exportDir = argv._[0];
 showHelp = function () {
 	console.log("Usage: typecho2md [option] [output]");
 	console.log("\nAvailable Options:\n");
-	console.log("    -h | --host [host]");
-	console.log("    Specify MySQL host. Default: localhost\n");
-	console.log("    --port [port]");
-	console.log("    Specify MySQL port. Default: 3306\n");
-	console.log("    -u | --user [user]");
-	console.log("    Specify MySQL user. Default: root\n");
-	console.log("    -k | --key | --password [password]");
-	console.log("    Specify MySQL password. Default value is blank.\n");
-	console.log("    -d | --database [database]");
-	console.log("    Specify which database should be dumped. Default: typecho\n");
-	console.log("    -p | --prefix [prefix]");
-	console.log("    Specify prefix of Typecho database. Default: typecho_\n");
-	console.log("    -t | --template [file]");
-	console.log("    Use a custom Markdown template in ejs format.\n");
-	console.log("    -h | --help");
-	console.log("    Print this help information and exit.\n");
-	console.log("    -v | --version");
-	console.log("    Print version and exit.\n");
+	console.log("  -h | --host [host]");
+	console.log("  Specify MySQL host. Default: localhost\n");
+	console.log("  --port [port]");
+	console.log("  Specify MySQL port. Default: 3306\n");
+	console.log("  -u | --user [user]");
+	console.log("  Specify MySQL user. Default: root\n");
+	console.log("  -k | --key | --password [password]");
+	console.log("  Specify MySQL password. Default value is blank.\n");
+	console.log("  -d | --database [database]");
+	console.log("  Specify which database should be dumped. Default: typecho\n");
+	console.log("  -p | --prefix [prefix]");
+	console.log("  Specify prefix of Typecho database. Default: typecho_\n");
+	console.log("  -t | --template [file]");
+	console.log("  Use a custom Markdown template in ejs format.\n");
+	console.log("  -h | --help");
+	console.log("  Print this help information and exit.\n");
+	console.log("  -v | --version");
+	console.log("  Print version and exit.\n");
 }
 
 if (argv.h || argv.help) {
@@ -105,11 +105,6 @@ connection.query('SELECT * FROM ' + MySQLPrefix + 'contents', function (error, r
         var item = results[i];
         if (item.parent == 0) {
             var content = item.text.split("\r\n");
-            for (var j in content) {
-                if (content[j + 1] != "" && content[j].charAt(content[j].length - 1) != " ") {
-                    content[j] += "  ";
-                }
-            }
             item.text = content.join("\n");
             var out = ejs.render(templateStr, item);
             var fileName = item.slug;
