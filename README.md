@@ -4,6 +4,12 @@
 
 A cli tool let you dump Markdown files from a [Typecho](http://typecho.org) installation.
 
+## THIS PROJECT IS ABANDONED
+
+由于我早已不再使用 Typecho，本项目已经结束了它的历史使命。本工具可能不适用于最新版 Typecho，请谨慎使用。
+
+如果希望继续完善本项目，请自行 fork。
+
 ## 安装 ##
 
 ```bash
@@ -43,12 +49,6 @@ typecho2md [选项] [输出目录]
 #### `-p | --prefix [prefix]`
 
 使用指定的数据库表前缀。默认值为 `typecho_`.
-
-#### `-t | --template [file]`
-
-使用自定义的、使用 [ejs](https://www.npmjs.com/package/ejs) 语法的 Markdown 模板文件。
-
-你可以在模板文件里直接以列名为变量，调用 `contents` 表中对应行的数据，比如 `<%- text %>` 可以调出未经处理的 Markdown 文本。
 
 #### `-h | --help`
 
