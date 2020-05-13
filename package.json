@@ -1,14 +1,11 @@
 {
   "name": "typecho-to-md",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "A cli tool let you dump Markdown files from a Typecho installation",
-  "author": "tcdw <admin@tcdw.net>",
+  "author": "tcdw <tcdw2011@gmail.com>",
   "main": "typecho2md.js",
   "bin": {
     "typecho2md": "./typecho2md.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -17,8 +14,12 @@
   "license": "BSD-3-Clause",
   "readmeFilename": "README.md",
   "dependencies": {
-    "minimist": "^1.2.0", 
-    "ejs": "^2.5.6", 
+    "minimist": "^1.2.0",
     "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
   }
 }
